@@ -23,7 +23,7 @@ describe('add', () => {
       const actual = add(ONE, ONE);
 
       const expected = TWO;
-      assert(equals(actual, expected));
+      assert.deepStrictEqual(actual, expected);
     });
   });
 });
@@ -47,7 +47,7 @@ describe('add', () => {
       const actual = add(ONE, ONE);
 
       const expected = TWO;
-      assert(equals(actual, expected));
+      assert.deepStrictEqual(actual, expected);
     });
   });
 
@@ -57,7 +57,7 @@ describe('add', () => {
       const actual = add(ONE, ZERO);
 
       const expected = ONE;
-      assert(equals(actual, expected));
+      assert.deepStrictEqual(actual, expected);
     });
   });
 });
@@ -80,7 +80,7 @@ describe('add', () => {
       it(`should return ${expected}`, () => {
         const actual = add(lhs, rhs);
 
-        assert(equals(actual, expected));
+      assert.deepStrictEqual(actual, expected);
       });
     });
   });
@@ -111,7 +111,7 @@ describe('add', () => {
       it(`should return ${expected}`, () => {
         const actual = add(lhs, rhs);
 
-        assert(equals(actual, expected));
+        assert.deepStrictEqual(actual, expected);
       });
     });
   });
@@ -139,7 +139,7 @@ describe('add', () => {
       const actual = add(ONE, ONE); // プログラマが入力として 1, 1 を選び、
 
       const expected = TWO; // 期待する出力として 2 を指定する。
-      assert(equals(actual, expected));
+      assert.deepStrictEqual(actual, expected);
     });
   });
 });
@@ -156,7 +156,7 @@ describe('add', () => {
       const actual = add(x, y);
 
       const expected = '???'; // 期待する出力として ??? を指定する。
-      assert(equals(actual, expected));
+      assert.deepStrictEqual(actual, expected);
     });
   });
 });
@@ -172,8 +172,9 @@ describe('add', () => {
       const actual = add(x, y);
 
       const expected = add(y, x); // 順序を反対にしても計算結果が変わらないことを確かめる。
-      assert(equals(actual, expected));
+      assert.deepStrictEqual(actual, expected);
     });
+    // 実際にはこれを大量に繰り返す。
   });
 });
 ```
@@ -188,7 +189,7 @@ describe('add', () => {
       const actual = add(x, y);
 
       const expected = add(y, x); // 引数の順序を反対にしても計算結果が変わらないこと（交換法則）を確かめる。
-      assert(equals(actual, expected));
+      assert.deepStrictEqual(actual, expected);
     });
   });
 
@@ -198,7 +199,7 @@ describe('add', () => {
       const actual = add(add(x, y), z);
 
       const expected = add(x, add(y, z)); // 計算する順序を変えても結果が変わらないこと（結合法則）を確かめる。
-      assert(equals(actual, expected));
+      assert.deepStrictEqual(actual, expected);
     });
   });
 
@@ -208,7 +209,7 @@ describe('add', () => {
       const actual = add(x, ZERO);
 
       const expected = x; // 0 と足しても元の数字と同じになること（単位元の存在）を確かめる。
-      assert(equals(actual, expected));
+      assert.deepStrictEqual(actual, expected);
     });
   });
 
@@ -218,11 +219,13 @@ describe('add', () => {
       const actual = add(x, ONE);
 
       const unexpected = x; // 1を足せば結果はXとは異なることを確かめる。
-      assert(!equals(actual, unexpected));
+      assert.deepStrictEqual(actual, expected);
     });
   });
 
-  // ... 前の Parameterized Test も残しておくとより安心。
+  // 実際にはそれぞれを大量に繰り返す。
+
+  // 前の Parameterized Test も残しておくとより安心。
 });
 ```
 
