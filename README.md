@@ -77,7 +77,8 @@ describe('add', () => {
   [
     {lhs: ONE, rhs: ONE, expected: TWO },
     {lhs: ONE, rhs: ZERO, expected: ONE },
-  ].forEach(({lhs, rhs, expected}) => {
+  ]
+  .forEach(({lhs, rhs, expected}) => {
     context(`(${lhs}, ${rhs})`, () => {
       it(`should return ${expected}`, () => {
         const actual = add(lhs, rhs);
@@ -108,7 +109,8 @@ describe('add', () => {
     {lhs: ONE_MILLION, rhs: ONE, expected: ONE_MILLION_ONE }, // 大きい値と小さい値の組み合わせ
     {lhs: ONE, rhs: ONE_MILLION, expected: ONE_MILLION_ONE }, // 小さい値と大きい値の組み合わせ
     {lhs: ZERO, rhs: ZERO, expected: ZERO }, // 境界値になりそうな値
-  ].forEach(({lhs, rhs, expected}) => {
+  ]
+  .forEach(({lhs, rhs, expected}) => {
     context(`(${lhs}, ${rhs})`, () => {
       it(`should return ${expected}`, () => {
         const actual = add(lhs, rhs);
