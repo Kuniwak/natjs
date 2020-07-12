@@ -5,10 +5,10 @@ datatype nat = Zero | Succ nat
 
 primrec add :: "nat \<Rightarrow> nat \<Rightarrow> nat" where
   "add a Zero = a"
-| "add a (Succ b) = Succ (add a b)"
+| "add a (Succ b) = add (Succ a) b"
 
 
-lemma add_iden [simp]: "x = add x Zero"
+lemma [simp]: "x = add x Zero"
   by auto
 
 
@@ -16,14 +16,13 @@ theorem "\<forall>x. add x Zero = x"
   by auto
 
 
-
-lemma add_assoc: "add (add x y) z = add x (add y z)"
-  apply(induct_tac z)
+lemma [simp]: "\<forall>x. add (Succ x) y = Succ (add x y)"
+  apply(induct_tac y)
   by auto
 
 
-lemma [simp]: "Succ (add x y) = add (Succ x) y"
-  apply(induct_tac y)
+lemma add_assoc: "\<forall> x y. add (add x y) z = add x (add y z)"
+  apply(induct_tac z)
   by auto
 
 
@@ -41,4 +40,4 @@ theorem "\<forall> x y. add x y = add y x"
 
 theorem "\<forall> x y z. add (add x y) z = add x (add y z)"
   apply(intro allI)
-  by (rule add_assoc)
+  by (rule add_assoc[rule_format])
